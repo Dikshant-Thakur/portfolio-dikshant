@@ -9,6 +9,8 @@ import hriLabGif from "../images/publications/hri_lab.gif"
 import urLousdVideo from "../images/publications/ur_lousd.mp4"
 import h1SilVideo from "../images/publications/h1_sil.mp4"
 import h1TrainVideo from "../images/nvidia/h1_Train.mp4"
+import carterOutdoorVideo from "../images/nvidia/Carter Outdoor.mp4"
+import clawVideo from "../images/nvidia/claw.mp4"
 
 // Helper function to detect if file is a video
 const isVideoFile = (url) => {
@@ -132,6 +134,22 @@ const Publications = () => {
       subtitle: "NVIDIA White Paper, 2025",
       imageSrc: h1TrainVideo,
       projectLink: "https://d1qx31qr3h6wln.cloudfront.net/publications/Isaac%20Lab%2C%20A%20GPU-Accelerated%20Simulation%20Framework%20for%20Multi-Modal%20Robot%20Learning.pdf",
+      type: "NVIDIA"
+    },
+    {
+      id: 4,
+      title: "Software-in-the-Loop Testing for Robots With OpenUSD, Isaac Sim, and ROS I",
+      subtitle: "NVIDIA GTC 2025",
+      imageSrc: carterOutdoorVideo,
+      projectLink: "https://www.nvidia.com/en-us/on-demand/session/gtc25-dlit71326/",
+      type: "NVIDIA"
+    },
+    {
+      id: 5,
+      title: "Learn OpenUSD: Robotics Best Practices I",
+      subtitle: "NVIDIA GTC 2025",
+      imageSrc: clawVideo,
+      projectLink: "https://www.nvidia.com/en-us/on-demand/session/gtc25-dlit71288/",
       type: "NVIDIA"
     }
   ];

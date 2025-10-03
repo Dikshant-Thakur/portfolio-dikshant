@@ -179,6 +179,11 @@
         background: #76b900;
       }
       
+      // GTC orange (NVIDIA event color)
+      &[data-type="GTC"] {
+        background: #ff6600;
+      }
+      
       // Fallback for any other types
       background: rgba(0, 0, 0, 0.7);
     }
