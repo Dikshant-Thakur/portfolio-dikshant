@@ -32,31 +32,14 @@
     margin-bottom: 2rem;
     width: 100%;
     max-width: 1000px; /* Ensure it doesn't exceed 1000px */
-    
-    /* Add mobile horizontal padding */
-    @media (max-width: 768px) {
-      padding: 0 16px;
-    }
-    @media (max-width: 480px) {
-      padding: 0 12px;
-    }
+    padding: 0; /* Remove all padding - container already has padding */
   
     .content {
       width: 100%;
       max-width: 1000px; /* Ensure content doesn't exceed 1000px */
       margin: 2rem auto 0; /* Center the content */
       text-align: justify;
-      padding: 0 32px; /* Add horizontal padding to ensure spacing from edges */
-      
-      @media (max-width: 768px) {
-        padding: 0 24px; /* Reduced padding on mobile */
-      }
-      @media (max-width: 480px) {
-        padding: 0 20px; /* Further reduced padding on small screens */
-      }
-      @media (max-width: 360px) {
-        padding: 0 16px; /* Minimal padding on very small screens */
-      }
+      padding: 0; /* Remove extra padding - container already has padding */
   
       h2 {
         font-size: 2rem; /* Reduced from 2.5rem (80% of original) */
@@ -78,16 +61,14 @@
         line-height: 1.5;
         color: #333;
         margin-bottom: 1.6rem; /* Reduced from 2rem (80% of original) */
-        padding: 0 1.6rem; /* Reduced from 2rem (80% of original) */
+        padding: 0; /* Remove extra padding - container already has padding */
         
         @media (max-width: 768px) {
           font-size: 1rem; /* Reverted to original mobile value */
-          padding: 0 1rem; /* Reverted to original mobile value */
         }
         
         @media (max-width: 480px) {
           font-size: 0.9rem; /* Reverted to original mobile value */
-          padding: 0 0.5rem; /* Reverted to original mobile value */
         }
       }
   

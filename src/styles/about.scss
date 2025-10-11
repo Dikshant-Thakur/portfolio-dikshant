@@ -27,6 +27,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    padding: 0; /* Remove all padding - container already has padding */
   
     .content {
       width: 55%;
