@@ -27,14 +27,15 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 2rem; /* Add gap between text and image */
     padding: 0; /* Remove all padding - container already has padding */
   
     .content {
-      width: 55%;
+      flex: 1 1 50%; /* Use flex instead of fixed width to account for gap */
       padding: 0; /* Remove extra padding - container already has padding */
       
       @media (max-width: 992px) {
-        width: 100%;
+        flex: 1 1 100%;
         padding: 0; /* Remove extra padding */
       }
   
@@ -56,7 +57,7 @@
     }
     
     .image-container {
-      width: 40%;
+      flex: 1 1 35%; /* Use flex instead of fixed width to account for gap */
       height: auto;
       overflow: hidden;
       border-radius: 12px; /* Reduced from 15px (80% of original) */
@@ -65,7 +66,7 @@
       z-index: 1;
       
       @media (max-width: 992px) {
-        width: 80%;
+        flex: 1 1 80%;
         margin: 2rem auto; /* Reverted to original mobile value */
       }
     }
