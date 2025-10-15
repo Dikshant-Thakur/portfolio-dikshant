@@ -33,7 +33,7 @@
   &.mobile {
     background-attachment: scroll;
     background-size: cover;
-    background-position: center;
+    background-position: 70% center; /* Center on subject who is at 70% from left */
     justify-content: flex-end !important;
     align-items: center !important;
     padding-bottom: 3vh !important; /* Consistent mobile bottom padding */
@@ -43,21 +43,21 @@
   @include media(">=phone", "<lgphone") {
     background-attachment: scroll;
     background-size: cover;
-    background-position: center;
+    background-position: 70% center; /* Center on subject who is at 70% from left */
     justify-content: flex-end !important;
     padding-bottom: 4vh !important; /* Extra space on smallest phones */
   }
   @include media(">=lgphone", "<tablet") {
     background-attachment: scroll;
     background-size: cover;
-    background-position: center;
+    background-position: 70% center; /* Center on subject who is at 70% from left */
     justify-content: flex-end !important;
     padding-bottom: 3vh !important;
   }
   @include media(">=tablet", "<desktop") {
     background-attachment: scroll;
     background-size: cover;
-    background-position: center;
+    background-position: 70% center; /* Center on subject who is at 70% from left */
     justify-content: flex-end !important;
     padding-bottom: 2.5vh !important;
   }
@@ -85,7 +85,7 @@
     and (-webkit-min-device-pixel-ratio: 2) {
     background-attachment: scroll;
     background-size: cover;
-    background-position: center;
+    background-position: 70% center; /* Center on subject who is at 70% from left */
     min-height: 100vh;
   }
   
@@ -96,7 +96,7 @@
     and (-webkit-min-device-pixel-ratio: 3) {
     background-attachment: scroll;
     background-size: cover;
-    background-position: center;
+    background-position: 70% center; /* Center on subject who is at 70% from left */
     min-height: 100vh;
   }
   
@@ -121,7 +121,7 @@
   &.portrait {
     background-attachment: scroll; // Changed from fixed to scroll for better compatibility
     background-size: cover;
-    background-position: center;
+    background-position: 70% center; /* Center on subject who is at 70% from left */
     justify-content: flex-end !important;
     padding-bottom: 3vh !important; /* More space in portrait for better mobile UX */
     @include media(">=tablet", "<desktop") {
@@ -142,7 +142,7 @@
   @media only screen and (-webkit-min-device-pixel-ratio: 2) {
     background-attachment: scroll;
     background-size: cover;
-    background-position: center;
+    background-position: 70% center; /* Center on subject who is at 70% from left */
   }
   
   h2 {
@@ -237,7 +237,7 @@
       height: 100%;
       z-index: -1;
       background-size: cover;
-      background-position: center;
+      background-position: 70% center; /* Center on subject who is at 70% from left */
     }
     
     // Content wrapper for iOS
