@@ -7,6 +7,8 @@ import "../styles/projects.scss"
 
 import DigitalTwin from "../images/workPhotos/DigitalTwin.mp4"
 import autonomous_vehicle from "../images/workPhotos/autonomous_vehicle.mp4"
+import UVMS from "../images/workPhotos/UVMS.mp4"
+import ManipTPIK from "../images/workPhotos/ManipulatorsTPIK.webm"
 
 const Project = () => {
   const { language } = useLanguage();
@@ -16,7 +18,9 @@ const Project = () => {
   // Media mapping for carousel items
   const mediaMap = {
     DigitalTwin: DigitalTwin,
-    autonomous_vehicle: autonomous_vehicle
+    autonomous_vehicle: autonomous_vehicle,
+    UVMS: UVMS,
+    ManipTPIK: ManipTPIK
   };
 
   // Get carousel items from data with translated content

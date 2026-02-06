@@ -267,7 +267,7 @@ UnigeTime: {
 UnigeExperience: [
   {
     en: "At Unige -- I need to write something here.",
-    it: ",我负责"
+    it: "All'Unige -- Devo scrivere qualcosa qui."
   }
 ],
 
@@ -330,6 +330,50 @@ projectsCarouselItems: [
       {
         text: { en: "Read More", it: "Scopri di più" },
         url: "https://github.com/Dikshant-Thakur/exp_assignment_2.git"
+      }
+    ]
+  },
+  {
+    media: "UVMS",
+    type: 'video',
+    title: {
+      en: "Under water Vehicle Manipulator System (UVMS)",
+      it: "Sistema di Manipolazione per Veicoli Subacquei (UVMS)"
+    },
+    // subtitle: {
+    //   en: "Subtitle of Project 1",
+    //   it: "Sottotitolo del Progetto 1"
+    // },
+    description: {
+      en: "Implemented a Task Priority Inverse Kinematics for an Underwater Vehicle Manipulator System (UVMS) to perform a specific task. The UVMS consists of an underwater vehicle equipped with a robotic manipulator arm. The control strategy involves coordinating the movements of the vehicle and the manipulator to achieve the desired task, such as reaching a specific location underwater.",
+      it: "Implementata una Task Priority Inverse Kinematics per un Sistema di Manipolazione per Veicoli Subacquei (UVMS) per eseguire un compito specifico. L'UVMS è costituito da un veicolo subacqueo dotato di un braccio manipolatore robotico. La strategia di controllo prevede il coordinamento dei movimenti del veicolo e del manipolatore per raggiungere il compito desiderato, come ad esempio raggiungere una posizione specifica sott'acqua."
+    },
+    buttons: [
+      {
+        text: { en: "Read More", it: "Scopri di più" },
+        url: "https://github.com/Dikshant-Thakur/Cooperative-Robotics-Assignments.git"
+      }
+    ]
+  },
+    {
+    media: "ManipTPIK",
+    type: 'video',
+    title: {
+      en: "Task Priority Inverse Kinematics for two Manipulators",
+      it: "Kinematics Inversa a Priorità per due Manipolatori"
+    },
+    // subtitle: {
+    //   en: "Subtitle of Project 1",
+    //   it: "Sottotitolo del Progetto 1"
+    // },
+    description: {
+      en: "Implemented a Task Priority Inverse Kinematics for two Manipulators to perform a specific task. The system consists of two robotic arms working together to achieve the desired task, such as transferring a 10 cm rod from one location to another.",
+      it: "Implementata una Kinematics Inversa a Priorità per due Manipolatori per eseguire un compito specifico. Il sistema è costituito da due bracci robotici che lavorano insieme per raggiungere il compito desiderato, come ad esempio trasferire un'asta di 10 cm da una posizione all'altra."
+    },
+    buttons: [
+      {
+        text: { en: "Read More", it: "Scopri di più" },
+        url: "https://github.com/Dikshant-Thakur/Cooperative-Robotics-Assignments.git"
       }
     ]
   }
