@@ -5,15 +5,8 @@ import { useLanguage } from "../contexts/LanguageContext"
 import data, { getText } from "../data"
 import "../styles/projects.scss"
 
-import airplaneImage from "../images/ProjectPhotos/airplane.webp"
-import watoImage from "../images/ProjectPhotos/Wato.webp"
-import hisecurityImage from "../images/ProjectPhotos/HiSecurity2.webp"
-import pilotImg from "../images/ProjectPhotos/Pilot.webp"
-import vexImg from "../images/ProjectPhotos/VEX.webp"
-import wearableImg from "../images/ProjectPhotos/wearableHacks.webp"
-import webappImg from "../images/ProjectPhotos/WebappProjects.webp"
-import mte380Img from "../images/ProjectPhotos/mte380.webp"
-import capstoneVideo from "../images/ProjectPhotos/capstone.mp4"
+import DigitalTwin from "../images/workPhotos/DigitalTwin.mp4"
+import autonomous_vehicle from "../images/workPhotos/autonomous_vehicle.mp4"
 
 const Project = () => {
   const { language } = useLanguage();
@@ -22,15 +15,8 @@ const Project = () => {
 
   // Media mapping for carousel items
   const mediaMap = {
-    airplaneImage,
-    watoImage,
-    capstoneVideo,
-    webappImg,
-    wearableImg,
-    mte380Img,
-    hisecurityImage,
-    vexImg,
-    pilotImg
+    DigitalTwin: DigitalTwin,
+    autonomous_vehicle: autonomous_vehicle
   };
 
   // Get carousel items from data with translated content

@@ -9,21 +9,21 @@ import About from "../components/about"
 import Skills from "../components/skills"
 import Footer from "../components/Footer"
 import Project from "../components/projects"
-import Nvidia from "../components/NVIDIA"
+// import Nvidia from "../components/NVIDIA"
 import Education from "../components/Education"
-import Publications from "../components/Publications"
+import Thesis from "../components/Thesis"
 
 const IndexPage = () => (
   <Layout>
     {/* eslint-disable-next-line react/jsx-pascal-case */}
-    <SEO title="Steven Feng Portfolio" />
+    <SEO title="Dikshant Thakur Portfolio" />
     <Header></Header>
     <About></About>
-    <Nvidia></Nvidia>
-    <Education></Education>
-    <Publications></Publications>
-    <Work></Work>
     <Project></Project>
+    {/* <Nvidia></Nvidia> */}
+    <Education></Education>
+    <Thesis></Thesis>
+    <Work></Work>
     <Skills></Skills>
     <Footer></Footer>
   </Layout>

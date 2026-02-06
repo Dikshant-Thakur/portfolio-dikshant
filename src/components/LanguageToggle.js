@@ -10,13 +10,13 @@ const LanguageToggle = () => {
       className="language-toggle"
       onClick={toggleLanguage}
       type="button"
-      aria-label={`Switch to ${language === 'en' ? 'Chinese' : 'English'}`}
+      aria-label={`Switch to ${language === 'en' ? 'Italian' : 'English'}`}
     >
       <span className="active-lang">
-        {language === 'en' ? '中' : 'EN'}
+        {language === 'en' ? 'IT' : 'EN'}
       </span>
       <span className="inactive-lang">
-        {language === 'en' ? 'EN' : '中'}
+        {language === 'en' ? 'EN' : 'IT'}
       </span>
     </button>
   );

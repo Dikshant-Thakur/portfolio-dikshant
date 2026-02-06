@@ -19,7 +19,7 @@ export const LanguageProvider = ({ children }) => {
       const urlParams = new URLSearchParams(window.location.search);
       const langParam = urlParams.get('lang');
       
-      if (langParam === 'zh' || langParam === 'en') {
+      if (langParam === 'it' || langParam === 'en') {
         setLanguage(langParam);
       }
     }
@@ -40,7 +40,7 @@ export const LanguageProvider = ({ children }) => {
   }, [language]);
 
   const toggleLanguage = () => {
-    setLanguage(prev => prev === 'en' ? 'zh' : 'en');
+    setLanguage(prev => prev === 'en' ? 'it' : 'en');
   };
 
   // Utility function to generate URLs with language parameter
@@ -60,7 +60,7 @@ export const LanguageProvider = ({ children }) => {
       toggleLanguage,
       getLanguageUrl,
       isEnglish: language === 'en',
-      isChinese: language === 'zh'
+      isItalian: language === 'it'
     }}>
       {children}
     </LanguageContext.Provider>

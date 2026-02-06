@@ -152,6 +152,7 @@
     text-align: center;
     font-weight: bold;
     color: white;
+    text-shadow: 2px 2px 8px black;
     @include media(">=phone", "<lgphone") {
       font-size: 1.8rem; /* Keep new smaller mobile size */
       line-height: 1.2;
@@ -175,6 +176,11 @@
       text-align: center;
       line-height: 1.3;
       color: white;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+      span {
+        text-shadow: none;
+      }
+  
       @include media(">=phone", "<lgphone") {
         font-size: 1.4rem; /* Slightly larger mobile size */
         line-height: 1.3;
@@ -191,18 +197,32 @@
   }
 
   p {
-    width: 40%;
+    width: 50%;
     text-align: center;
-    overflow: visible;
+    margin: 0 auto;
+    margin-top: 1.5vh;
     line-height: 1.4;
-    font-size: 1.2rem; /* Consistent with site body text */
-    margin-top: 1.2vh; /* Reduced spacing */
-    color: white;
+    font-size: 1.3rem;
+
+    color: #000000;   /* Deep Navy Blue */
+    font-weight: 1000; /* Bold rakhna zaroori hai */
+    background: none; 
+    padding: 1000;
+    
+    /* --- SUDHAAR YAHAN HAI --- */
+    text-shadow: 
+      /* Layer 1: Ekdum text ke chipak ke safed border (Sharp) */
+      0px 0px 15px rgba(255, 255, 255, 0.5),
+      
+      /* Layer 2: Thoda sa soft background taaki railing lines text ko kaate nahi */
+      0px 0px 15px rgba(255, 255, 255, 0.5); 
+    /* ------------------------- */
+
     @include media(">=phone", "<lgphone") {
-      font-size: 0.9rem; /* Compact mobile size */
-      line-height: 1.4;
-      width: 85%; /* Better mobile width with horizontal space */
-      padding: 0 20px; /* Add horizontal padding */
+      width: 90%;
+      font-size: 1rem;
+      /* Mobile ke liye aur bhi subtle */
+      text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.9);
     }
     @include media(">=lgphone", "<tablet") {
       font-size: 1rem; /* Progressive scaling */

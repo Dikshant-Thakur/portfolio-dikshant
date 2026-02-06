@@ -3,7 +3,7 @@ import Fade from "./animations/Fade"
 import { useLanguage } from "../contexts/LanguageContext"
 import data, { getText } from "../data"
 import { Typewriter } from "react-simple-typewriter"
-import imgUrl from "../images/headerphoto2.webp"
+import imgUrl from "../images/headerphoto2.jpeg"
 
 const Header = () => {
   const { language } = useLanguage();
@@ -52,6 +52,31 @@ const Header = () => {
     }
   }, []);
 
+  // Updated roles based on your experience
+  const italianRoles = [
+    "Ingegnere Robotico", 
+    "Ingegnere dell'Automazione Industriale", 
+    "Sviluppatore di Simulazioni", 
+    "Calciatore", 
+    "Giocatore di Cricket",
+    "Corridore",
+    "Appassionato di Viaggi",
+    "Beatboxer", 
+    "Giocatore di Ping Pong"
+  ];
+
+  const englishRoles = [
+    "Robotics Engineer", 
+    "Industrial Automation Engineer", 
+    "Simulation Developer", 
+    "Football Player", 
+    "Cricket Player",
+    "Runner",
+    "Travel Enthusiast",
+    "Beatboxer", 
+    "Table Tennis Player"
+  ];
+
   // For iOS devices, use an img tag approach
   if (isIOS) {
     return (
@@ -69,15 +94,15 @@ const Header = () => {
             <div className="content-wrapper">
               <Fade bottom>
                 <h2>
-                  {getText({ en: "Hi, I am", zh: "你好,我是" }, language)} {getText(data.name, language)}{" "}
+                  {getText({ en: "Hi, I am", it: "Ciao, sono" }, language)} {getText(data.name, language)}{" "}
                 </h2>
               </Fade>
 
               <Fade bottom>
                 <div className="heading-wrapper">
                   <h1>
-                    {getText({ en: "I am a", zh: "我是一名" }, language)}{" "}
-                    <span style={{ color: "red", fontWeight: "bold" }}>
+                    {getText({ en: "I am a", it: "Sono un" }, language)}{" "}
+                    <span style={{ color: "black", fontWeight: "bold" }}>
                       <Typewriter
                         loop
                         cursor
@@ -85,10 +110,7 @@ const Header = () => {
                         typeSpeed={70}
                         deleteSpeed={50}
                         delaySpeed={1200}
-                        words={language === 'zh' ? 
-                          ["机器人工程师", "飞行员", "程序猿", "学生", "单簧管演奏者", "固件开发工程师"] :
-                          ["Robotics Engineer", "Pilot", "Code Monkey", "Accordionist", "Simulation Developer", "Student", "Clarinetist", "Firmware Developer"]
-                        }
+                        words={language === 'it' ? italianRoles : englishRoles}
                       />
                     </span>
                   </h1>
@@ -101,10 +123,10 @@ const Header = () => {
 
               <Fade bottom>
                 <a
-                  href={`https://www.linkedin.com/in/stevenfeng7/`}
+                  href={`https://www.linkedin.com/in/dikshantthakur/`}
                   className="primary-btn"
                 >
-                  {getText({ en: "CONNECT WITH ME!", zh: "与我联系！" }, language)}
+                  {getText({ en: "CONNECT WITH ME!", it: "CONTATTAMI!" }, language)}
                 </a>
               </Fade>
             </div>
@@ -129,15 +151,15 @@ const Header = () => {
         >
           <Fade bottom>
             <h2>
-              {getText({ en: "Hi, I am", zh: "你好,我是" }, language)} {getText(data.name, language)}{" "}
+              {getText({ en: "Hi, I am", it: "Ciao, sono" }, language)} {getText(data.name, language)}{" "}
             </h2>
           </Fade>
 
           <Fade bottom>
             <div className="heading-wrapper">
               <h1>
-                {getText({ en: "I am a", zh: "我是一名" }, language)}{" "}
-                <span style={{ color: "red", fontWeight: "bold" }}>
+                {getText({ en: "I am a", it: "Sono un" }, language)}{" "}
+                <span style={{ color: "black", fontWeight: "bold" }}>
                   <Typewriter
                     loop
                     cursor
@@ -145,10 +167,7 @@ const Header = () => {
                     typeSpeed={70}
                     deleteSpeed={50}
                     delaySpeed={1200}
-                    words={language === 'zh' ? 
-                      ["机器人工程师", "飞行员", "程序猿", "学生", "单簧管演奏者", "固件开发工程师"] :
-                      ["Robotics Engineer", "Pilot", "Code Monkey", "Accordionist", "Simulation Developer", "Student", "Clarinetist", "Firmware Developer"]
-                    }
+                    words={language === 'it' ? italianRoles : englishRoles}
                   />
                 </span>
               </h1>
@@ -161,10 +180,10 @@ const Header = () => {
 
           <Fade bottom>
             <a
-              href={`https://www.linkedin.com/in/stevenfeng7/`}
+              href={`https://www.linkedin.com/in/dikshantthakur/`}
               className="primary-btn"
             >
-              {getText({ en: "CONNECT WITH ME!", zh: "与我联系！" }, language)}
+              {getText({ en: "CONNECT WITH ME!", it: "CONTATTAMI!" }, language)}
             </a>
           </Fade>
         </div>
