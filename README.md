@@ -1,10 +1,10 @@
 # Hi, this is my personal website!
 
-My name is Ji Yuan "Steven" Feng, I am a robotics engineer at NVIDIA, building the next generation simulation platforms for training and deploying sophisticated robots.
+My name is Dikshant Thakur , I am robotics enthusiat doing my masters (about to graduate) from University of Genoa, Italy. 
 
-This repo contains the source code to my personal website. 
+This repo contains the source code to my personal website, which is inspired by Steven. 
 
-Checkout my site at: https://stevenf7.github.io/
+Checkout my site at: 
 
 ## Development
 
@@ -46,3 +46,4 @@ Running this command in your local terminal will deploy your current branch to "
 ```bash
 npm run deploy
 ```
+
