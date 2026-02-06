@@ -1,5 +1,6 @@
 module.exports = {
   // Remove pathPrefix for custom domain setup
+  pathPrefix: "/portfolio-dikshant",
   siteMetadata: {
     title: `Ciao, benvenuti sul mio sito personale!`,
     description: `This is my personal website where I share my projects`,
