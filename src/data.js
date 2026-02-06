@@ -60,6 +60,7 @@ const siteData = {
   nav: {
     home: { en: "Home", it: "Home" },
     work: { en: "Work", it: "Lavoro" },
+    thesis: { en: "Thesis", it: "Tesi" },
     projects: { en: "Projects", it: "Progetti" },
     contact: { en: "Contact", it: "Contatto" },
     resume: { en: "Resume", it: "Curriculum" }

@@ -30,7 +30,7 @@ const Navbar = () => {
               <button onClick= {event =>  window.location.href=getLanguageUrl(language, '/') + '#projects'} type="button">
                 {getText(data.nav.projects, language)}
               </button>
-              <button onClick= {event =>  window.location.href=getLanguageUrl(language, '/') + '#th'} type="button">
+              <button onClick= {event =>  window.location.href=getLanguageUrl(language, '/') + '#thesis'} type="button">
                 {getText(data.nav.thesis, language)}
               </button>
               <button onClick= {event =>  window.location.href=getLanguageUrl(language, '/') + '#contact'} type="button">

@@ -36,8 +36,8 @@ const Footer = () => {
           </Fade>
           <Fade bottom>
           <span>
-            Made by <span role="img" aria-label="duck">🦆</span>
-            <a href="https://www.linkedin.com/in/dikshantthakur/"> Ji Yuan "Dikshant" Thakur</a>
+            Made by <span role="img" aria-label="heart">❤️</span>
+            <a href="https://www.linkedin.com/in/dikshantthakur/"> Dikshant Thakur</a>
           </span>
           </Fade>
         </div>
