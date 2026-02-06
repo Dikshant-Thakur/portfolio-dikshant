@@ -4,6 +4,7 @@ My name is Dikshant Thakur , I am robotics enthusiat doing my masters (about to 
 
 This repo contains the source code to my personal website, which is inspired by Steven. 
 
+
 Checkout my site at: 
 
 ## Development
@@ -31,6 +32,14 @@ This site is automatically deployed using GitHub Actions. When you push to the `
 2. Deploy to GitHub Pages
 3. Update your live site
 
+### Deployment Fix
+If your site is only showing the `README.md` instead of the portfolio, follow these steps:
+1. **Add `.nojekyll`**: Create an empty file named `.nojekyll` in the root directory to disable Jekyll processing.
+2. **Setup GitHub Actions**: Go to Repository Settings > Pages and change the source to **GitHub Actions**.
+3. **Gatsby Workflow**: Configure the Gatsby deployment workflow. This will automate the `gatsby build` process.
+4. **Target Branch**: Ensure your code is pushed to the branch monitored by the workflow (in this case, `production`).
+5. **Verify**: Check the **Actions** tab in GitHub to ensure the build process completes with a green tick.
+
 ## Quality Assurance
 
 ### Pull Request Checks
@@ -46,4 +55,5 @@ Running this command in your local terminal will deploy your current branch to "
 ```bash
 npm run deploy
 ```
+
 
