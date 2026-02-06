@@ -10,6 +10,7 @@ import autonomous_vehicle from "../images/workPhotos/autonomous_vehicle.mp4"
 import UVMS from "../images/workPhotos/UVMS.mp4"
 import ManipTPIK from "../images/workPhotos/ManipulatorsTPIK.webm"
 
+
 const Project = () => {
   const { language } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);

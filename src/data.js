@@ -218,8 +218,8 @@ const siteData = {
         it: "Tirocinio - Maruti Suzuki India"
       },
       para: {
-        en: "XYZ Internship",
-        it: "Tirocinio XYZ"
+        en: "Exposure of manufacturing processes and automation in the automotive industry.",
+        it: "Esposizione ai processi di produzione e automazione nell'industria automobilistica."
       },
       
       imageSrc:
@@ -231,10 +231,13 @@ const siteData = {
 
       description: [
         {
-          en: "XYZ",
-          it: "XYZ"
+          en: "Studied the cycle time of the assembly line and identified bottlenecks, proposing solutions to optimize production flow and reduce downtime.",
+          it: "Studiato il tempo ciclo della linea di assemblaggio e identificati i colli di bottiglia, proponendo soluzioni per ottimizzare il flusso di produzione e ridurre i tempi di inattività."
         },
-
+        {
+          en: "Understanding the manufacturing processes and automation in the automotive industry, gaining insights into the integration of robotics and control systems in a high-volume production environment.",
+          it: "Comprensione dei processi di produzione e automazione nell'industria automobilistica, acquisendo informazioni sull'integrazione della robotica e dei sistemi di controllo in un ambiente di produzione ad alto volume."
+        },
       ],
       
       

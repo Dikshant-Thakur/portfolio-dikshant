@@ -33,7 +33,7 @@
   &.mobile {
     background-attachment: scroll;
     background-size: cover;
-    background-position: 70% center; /* Center on subject who is at 70% from left */
+    background-position: center; /* Center on subject who is at 70% from left */
     justify-content: flex-end !important;
     align-items: center !important;
     padding-bottom: 3vh !important; /* Consistent mobile bottom padding */
@@ -138,7 +138,7 @@
   &.portrait {
     background-attachment: scroll; // Changed from fixed to scroll for better compatibility
     background-size: cover;
-    background-position: 70% center; /* Center on subject who is at 70% from left */
+    background-position: center; /* Center on subject who is at 70% from left */
     justify-content: flex-end !important;
     padding-bottom: 3vh !important; /* More space in portrait for better mobile UX */
     @include media(">=tablet", "<desktop") {
@@ -157,9 +157,9 @@
   
   // General fix for all mobile devices with high pixel ratio (retina displays)
   @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-    background-attachment: scroll;
+    background-attachment: scroll !important;
     background-size: cover;
-    background-position: 70% center; /* Center on subject who is at 70% from left */
+    background-position: center center !important; /* 70% hata diya, ab iPhone pe sahi dikhega */
   }
   
   h2 {
@@ -259,7 +259,7 @@
   &.ios-device {
     background-attachment: scroll !important; // Force scroll on iOS
     background-size: cover !important;
-    background-position: center !important;
+    background-position: center center !important;
     -webkit-background-size: cover !important;
     min-height: 100vh;
     position: relative;
@@ -274,7 +274,8 @@
       height: 100%;
       z-index: -1;
       background-size: cover;
-      background-position: 70% center; /* Center on subject who is at 70% from left */
+      background-position: center center !important;/* Center on subject who is at 70% from left */
+      background-repeat: no-repeat;
     }
     
     // Content wrapper for iOS
@@ -285,7 +286,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-end; /* Bottom align text for iOS mobile */
-      padding-bottom: 2vh; /* Consistent bottom padding */
+      padding-bottom: 3vh; /* Consistent bottom padding */
       z-index: 1;
     }
   }

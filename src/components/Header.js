@@ -102,7 +102,7 @@ const Header = () => {
                 <div className="heading-wrapper">
                   <h1>
                     {getText({ en: "I am a", it: "Sono un" }, language)}{" "}
-                    <span style={{ color: "black", fontWeight: "bold" }}>
+                    <span style={{ color: "red", fontWeight: "bold" }}>
                       <Typewriter
                         loop
                         cursor
