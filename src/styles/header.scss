@@ -43,23 +43,27 @@
   @include media(">=phone", "<lgphone") {
     background-attachment: scroll;
     background-size: cover;
-    /* CHANGE: Mobile par subject ko wapis center ke paas laao */
-    background-position: center bottom; /* Ya 'center center' try karo agar bottom se cut raha hai */
+    
+    /* CHANGE HERE: 70% ki jagah 'center' kar diya */
+    background-position: center center !important; 
+    
     justify-content: flex-end !important;
     padding-bottom: 4vh !important;
-    height: 100vh; /* Ensure full height */
-    min-height: -webkit-fill-available; /* Fix for mobile browser bars */
+    
+    /* Mobile browser bar fix */
+    height: 100vh; 
+    min-height: -webkit-fill-available;
   }
 
   @include media(">=lgphone", "<tablet") {
     background-attachment: scroll;
     background-size: cover;
-    /* CHANGE: Thoda sa adjustment bade phones ke liye */
-    background-position: center bottom; 
+    
+    /* CHANGE HERE */
+    background-position: center center !important; 
+    
     justify-content: flex-end !important;
     padding-bottom: 3vh !important;
-    height: 100vh;
-    min-height: -webkit-fill-available;
   }
   @include media(">=tablet", "<desktop") {
     background-attachment: scroll;
@@ -92,7 +96,10 @@
     and (-webkit-min-device-pixel-ratio: 2) {
     background-attachment: scroll;
     background-size: cover;
-    background-position: 70% center; /* Center on subject who is at 70% from left */
+    
+    /* CHANGE HERE: 70% hataya */
+    background-position: center center !important; 
+    
     min-height: 100vh;
   }
   
@@ -103,7 +110,10 @@
     and (-webkit-min-device-pixel-ratio: 3) {
     background-attachment: scroll;
     background-size: cover;
-    background-position: 70% center; /* Center on subject who is at 70% from left */
+    
+    /* CHANGE HERE: 70% hataya */
+    background-position: center center !important; 
+    
     min-height: 100vh;
   }
   
