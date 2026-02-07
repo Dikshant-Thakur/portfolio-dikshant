@@ -13,7 +13,7 @@ const ResumeContent = () => {
   // 1. Yahan hum language ke hisab se File ID set kar rahe hain
   const fileIds = {
     en: "1p8jaOpyaeOmtPBCX8BgHewX8gFHLsNdf", // English CV ID (Jo abhi chal rahi hai)
-    it: "YOUR_ITALIAN_FILE_ID_HERE",        // Italian CV ID (Yahan nayi ID dalna)
+    it: "17krJ1ZAKzF2ANL52X3xmuFwxSf_77KzT",        // Italian CV ID (Yahan nayi ID dalna)
   };
 
   // 2. Current Language ki ID uthao (Agar IT nahi mili to EN default rahegi)
