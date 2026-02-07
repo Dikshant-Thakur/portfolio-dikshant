@@ -292,6 +292,43 @@ UnigeCarouselItems: [
 
 // Projects Carousel Items
 projectsCarouselItems: [
+
+  {
+    media: "Injection_Molding", 
+    type: 'image',
+
+    modalMedia: "PLC",
+    type: 'image',
+    title: {
+      en: "Industrial Automation & Commissioning Projects",
+      it: "Progetti di Automazione Industriale e Commissioning"
+    },
+    description: {
+      en: "Delivered multiple end-to-end automation projects involving PLC programming, machine commissioning, and efficiency optimization.",
+      it: "Realizzazione di molteplici progetti di automazione end-to-end che coinvolgono programmazione PLC, messa in servizio di macchine e ottimizzazione dell'efficienza."
+    },
+    isModal: true, 
+    detailedDescription: [
+        {
+            en: "Foam Block Cutting: Engineered an automated system using Siemens TIA Portal and laser sensors, reducing cycle time by 55% and operator requirements from 3 to 1.",
+            it: "Taglio Blocchi di Schiuma: Progettazione di un sistema automatizzato utilizzando Siemens TIA Portal e sensori laser, riducendo il tempo ciclo del 55% e i requisiti degli operatori da 3 a 1."
+        },
+        {
+            en: "Injection Molding Setup: Managed the installation and configuration of 10 injection molding machines, ensuring seamless commissioning and adherence to FAT protocols.",
+            it: "Setup Stampaggio a Iniezione: Gestione dell'installazione e configurazione di 10 presse a iniezione, garantendo una messa in servizio senza interruzioni e il rispetto dei protocolli FAT."
+        },
+        {
+            en: "Line Optimization: Upgraded legacy PLCs and optimized logic for an existing production line, achieving a 30% reduction in cycle time and boosting plant productivity.",
+            it: "Ottimizzazione Linea: Aggiornamento di PLC obsoleti e ottimizzazione della logica per una linea di produzione esistente, ottenendo una riduzione del 30% del tempo ciclo e aumentando la produttività dell'impianto."
+        }
+    ],
+    buttons: [
+      {
+        text: { en: "Read More", it: "Scopri di più" },
+        url: "#" 
+      }
+    ]
+  },
   {
     media: "DigitalTwin",
     type: 'video',
