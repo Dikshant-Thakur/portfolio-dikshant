@@ -294,10 +294,10 @@ UnigeCarouselItems: [
 projectsCarouselItems: [
 
   {
-    media: "Injection_Molding", 
+    media: "PLC", 
     type: 'image',
 
-    modalMedia: "PLC",
+    modalMedia: "Injection_Molding",
     type: 'image',
     title: {
       en: "Industrial Automation & Commissioning Projects",
