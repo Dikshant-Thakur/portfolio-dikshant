@@ -12,11 +12,11 @@ import linkedinIcon from "./images/contactIcon/linkedin.png"
 
 
 // Company icon
-import GodrejVideo from "./images/company/GodrejIntroductionVideo.mp4"
+import GodrejVideo from "./images/company/GodrejIntroductionVideo.webm"
 import reckitticon from "./images/company/reckitt.png"
-import ReckittBenckiserVideo from "./images/company/ReckkitBenikster.mp4"
+import ReckittBenckiserVideo from "./images/company/ReckkitBenikster.webm"
 import Godrej_me_with_robot from "./images/workPhotos/Godrej_me.jpeg"
-import Maruti_Video from "./images/company/Maruti_Video.mp4"
+import Maruti_Video from "./images/company/Maruti_Video.webm"
 
 
 

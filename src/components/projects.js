@@ -5,9 +5,9 @@ import { useLanguage } from "../contexts/LanguageContext"
 import data, { getText } from "../data"
 import "../styles/projects.scss"
 
-import DigitalTwin from "../images/workPhotos/DigitalTwin.mp4"
-import autonomous_vehicle from "../images/workPhotos/autonomous_vehicle.mp4"
-import UVMS from "../images/workPhotos/UVMS.mp4"
+import DigitalTwin from "../images/workPhotos/DigitalTwin.webm"
+import autonomous_vehicle from "../images/workPhotos/autonomous_vehicle.webm"
+import UVMS from "../images/workPhotos/UVMS.webm"
 import ManipTPIK from "../images/workPhotos/ManipulatorsTPIK.webm"
 
 
