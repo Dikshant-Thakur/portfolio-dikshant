@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Fade from "./animations/Fade"
-import { Carousel, Modal, Button } from "react-bootstrap"
+import { Carousel, Modal } from "react-bootstrap"
 import { useLanguage } from "../contexts/LanguageContext"
 import data, { getText } from "../data"
 import "../styles/projects.scss"
@@ -15,19 +15,15 @@ import Injection_Molding from "../images/workPhotos/Injection_Molding.jpg"
 
 const Project = () => {
   const { language } = useLanguage();
-  const [activeIndex, setActiveIndex] = useState(0); // State to control slide
+  const [activeIndex, setActiveIndex] = useState(0); 
   const [isMobile, setIsMobile] = useState(false);
-  
-  // Modal states
   const [showModal, setShowModal] = useState(false);
   const [currentModalData, setCurrentModalData] = useState(null);
 
-  // Media mapping
   const mediaMap = {
     DigitalTwin, autonomous_vehicle, UVMS, ManipTPIK, PLC, Injection_Molding
   };
 
-  // Data Processing
   const carouselItems = data.projectsCarouselItems.map(item => ({
     ...item,
     media: mediaMap[item.media],
@@ -51,7 +47,6 @@ const Project = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Is function se hum carousel ko control karenge
   const handleSelect = (selectedIndex) => {
     setActiveIndex(selectedIndex);
   };
@@ -73,26 +68,29 @@ const Project = () => {
         </Fade>
         
         <div className="project-wrapper">
-          {/* --- MAIN CAROUSEL (UNCHANGED) --- */}
           <Carousel 
             className="masterCarousel" 
             activeIndex={activeIndex}
             onSelect={handleSelect}
             touch={true} 
-            interval={null} // Auto-play band kar diya taaki user khud control kare (optional)
-            indicators={false} // Default dots hata diye kyunki ab hum thumbnails use karenge
-            controls={!isMobile}
+            interval={null} 
+            indicators={false}
+            controls={true}
             variant="dark"
           >
               {carouselItems.map((item, index) => (
                 <Carousel.Item key={index}>
-                  {item.type === 'video' ? (
-                    <div className="video-container">
-                      <video className="d-block" src={item.media} autoPlay muted loop playsInline />
-                    </div>
-                  ) : (
-                    <img className="d-block w-100" src={item.media} alt={item.title} />
-                  )}
+                  {/* Changed: Removed TiltWrapper, Added a simple container class for Zoom effect */}
+                  <div className="project-media-container">
+                    {item.type === 'video' ? (
+                      <div className="video-container">
+                        <video className="d-block" src={item.media} autoPlay muted loop playsInline />
+                      </div>
+                    ) : (
+                      <img className="d-block w-100" src={item.media} alt={item.title} />
+                    )}
+                  </div>
+
                   <Carousel.Caption className="carouselCaption">
                     <h3>{item.title}</h3>
                     <p>{item.description}</p>
@@ -106,13 +104,12 @@ const Project = () => {
               ))}
           </Carousel>
 
-          {/* --- NEW THUMBNAIL NAVIGATION (Bottom Strip) --- */}
           <div className="thumbnail-navigation">
             {carouselItems.map((item, index) => (
               <div 
                 key={index} 
                 className={`thumb-item ${index === activeIndex ? 'active' : ''}`}
-                onClick={() => handleSelect(index)} // Clicking sets the main carousel index
+                onClick={() => handleSelect(index)}
               >
                 <div className="thumb-media">
                   {item.type === 'video' ? (
@@ -129,13 +126,11 @@ const Project = () => {
         </div>
       </div>
 
-      {/* MODAL (UNCHANGED) */}
       <Modal show={showModal} onHide={() => setShowModal(false)} size="lg" centered className="project-modal">
         {currentModalData && (
           <>
             <Modal.Header closeButton><Modal.Title>{currentModalData.title}</Modal.Title></Modal.Header>
             <Modal.Body>
-              {/* Modal Body Content same as before */}
               <div style={{ marginBottom: '20px' }}>
                 {(currentModalData.modalMedia || currentModalData.media) && (
                    (currentModalData.type === 'video') ? 

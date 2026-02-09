@@ -368,7 +368,7 @@ projectsCarouselItems: [
     //   it: "Sottotitolo del Progetto 1"
     // },
     description: {
-      en: " developed a custom autonomous robot that explores its environment to find and scan all ArUco markers. Using smart planning, it identifies the marker with the lowest ID and automatically navigates back to that specific location.",
+      en: " Developed a custom autonomous robot that explores its environment to find and scan all ArUco markers. Using smart planning, it identifies the marker with the lowest ID and automatically navigates back to that specific location.",
       it: "Ha sviluppato un robot autonomo personalizzato che esplora l'ambiente circostante per individuare e scansionare tutti i marker ArUco. Grazie a una pianificazione intelligente, identifica il marker con l'ID più basso e torna automaticamente in quella posizione specifica."
     },
     buttons: [

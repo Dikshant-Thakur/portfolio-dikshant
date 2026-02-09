@@ -14,7 +14,6 @@ import rover2 from '../images/backgroundIcons/rover2.svg';
 import arms from '../images/backgroundIcons/arms.svg';
 import robot2 from '../images/backgroundIcons/robot2.svg';
 import arm from '../images/backgroundIcons/arm.svg';
-// Import newly added icons
 import industry from '../images/backgroundIcons/industry.svg';
 import aiResearch from '../images/backgroundIcons/ai-research.svg';
 import aiSophia from '../images/backgroundIcons/ai-sophia.svg';
@@ -36,77 +35,44 @@ const BackgroundIcons = () => {
   const resizeTimeout = useRef(null);
   const generatedGrid = useRef(false);
   const lastGridSize = useRef(0);
+  
+  const iconRefs = useRef([]);
 
-  // Handle mobile detection separately to avoid infinite loops
   useEffect(() => {
     const checkMobile = () => {
       if (typeof window !== 'undefined') {
         setIsMobile(window.innerWidth <= 768);
       }
     };
-
     checkMobile();
-        try {
-      window.addEventListener('resize', checkMobile);
-    } catch (error) {
-      console.warn('Error adding resize listener:', error);
-    }
-    
-    return () => {
-      try {
-        window.removeEventListener('resize', checkMobile);
-      } catch (error) {
-        console.warn('Error removing resize listener:', error);
-      }
-    };
+    try { window.addEventListener('resize', checkMobile); } catch (e) {}
+    return () => { try { window.removeEventListener('resize', checkMobile); } catch (e) {} };
   }, []);
 
-  
-  // All available icons - memoized to prevent useCallback dependency changes
   const allIcons = useMemo(() => [
     robot, aerial, hand1, hand2, hand3, pet, computer, rover1, rover2, arms, robot2, arm,
-    // Add newly imported icons
     industry, aiResearch, aiSophia, ai, robotAlien, aerialImaging, artificialIntelligence, 
     robot3, petRobot, robot4, robot5, robotAssistant, dummy, robot6
   ], []);
 
-  // Helper function to compute header height - simplified to prevent infinite loops
   const getHeaderHeight = useCallback(() => {
-    if (typeof window === 'undefined' || typeof document === 'undefined') return 0;
-    
-    // Simplified header detection - just use a fixed percentage
+    if (typeof window === 'undefined') return 0;
     const viewportHeight = window.innerHeight;
     const headerHeight = Math.max(80, viewportHeight * 0.15);
-    
-    // Get the current path to consider special cases
     const currentPath = window.location.pathname;
-    
-    // For resume page, use a smaller header area
-    if (currentPath.includes('resume')) {
-      return Math.min(headerHeight, 60);
-    }
-    
+    if (currentPath.includes('resume')) return Math.min(headerHeight, 60);
     return headerHeight;
-  }, []); // Empty dependency array since we don't need to recreate this function
+  }, []); 
   
-  // Generate the grid based on current dimensions and path
   const generateGrid = useCallback(() => {
-    // Only run in browser
     if (typeof window === 'undefined') return;
     
     const grid = [];
-    
-    // Get current dimensions
     const width = window.innerWidth;
     const height = window.innerHeight;
-    
-    // Get current path
     const path = window.location.pathname;
-    
-    // Use the isMobile state instead of recalculating
     const isMobileView = isMobile;
     
-    // If on a very small screen, don't show icons at all
     if (width <= 480) {
       if (lastGridSize.current !== 0) {
         setIcons([]);
@@ -115,187 +81,170 @@ const BackgroundIcons = () => {
       return;
     }
     
-    // Set spacing based on screen size and path
-    let horizontalSpacing = 400; // Default spacing
-    let verticalSpacing = 80;    // Default spacing
+    let horizontalSpacing = 450; 
+    let verticalSpacing = 160;    
     
-    // Increase spacing on resume page
-    if (path.includes('resume')) {
-      verticalSpacing = 300;
-    }
+    if (path.includes('resume')) verticalSpacing = 350; 
     
-    // Adjust spacing for mobile
     if (isMobileView) {
-      horizontalSpacing = path.includes('resume') ? 350 : 200;
-      verticalSpacing = path.includes('resume') ? 200 : 60;
+      horizontalSpacing = path.includes('resume') ? 350 : 250;
+      verticalSpacing = path.includes('resume') ? 250 : 100;
     }
     
-    // Calculate number of columns and rows
-    const numCols = Math.ceil(width / horizontalSpacing); 
+    const numCols = Math.ceil(width / horizontalSpacing) + 1;
     const numRows = Math.ceil(height / verticalSpacing);
-    
-    // Dynamically compute header height
     const headerHeight = getHeaderHeight();
     const headerHeightPercent = (headerHeight / height) * 100;
     
-    // Generate grid of icons
     for (let row = 0; row < numRows; row++) {
+      const rowOffset = (row % 2 === 1) ? (horizontalSpacing / 2) : 0;
+      
       for (let col = 0; col < numCols; col++) {
-        // Calculate position
-        const x = (col * horizontalSpacing / width) * 100;
-        const y = headerHeightPercent + ((row * verticalSpacing / height) * 100);
+        const jitterX = (Math.random() - 0.5) * 30; 
+        const jitterY = (Math.random() - 0.5) * 10;
         
-        // Skip if in header area
+        const pixelX = (col * horizontalSpacing) + rowOffset + jitterX;
+        const x = (pixelX / width) * 100;
+        const y = headerHeightPercent + ((row * verticalSpacing / height) * 100) + (jitterY / height * 100);
+        
         if (y < headerHeightPercent) continue;
         
-        // Set properties
         const initialRotation = Math.random() * 360;
-        const opacity = 0.3;
+        
+        // --- CHANGED: Opacity increased to 0.2 ---
+        const opacity = 0.2; 
+        
         const iconIndex = Math.floor(Math.random() * allIcons.length);
         
-        // Add icon to grid
         grid.push({
           id: `${row}-${col}`,
           src: allIcons[iconIndex],
-          x,
-          y,
-          initialRotation,
-          opacity
+          x, y, initialRotation, opacity
         });
       }
     }
     
-    // Add extra icons on right edge
-    const rightEdgeIcons = isMobileView ? 1 : 3;
-    for (let i = 0; i < rightEdgeIcons; i++) {
-      const row = Math.floor(Math.random() * numRows);
-      const y = headerHeightPercent + ((row * verticalSpacing / height) * 100);
-      
-      if (y < headerHeightPercent) continue;
-      
-      const x = 100 + (Math.random() * 5);
-      const initialRotation = Math.random() * 360;
-      const opacity = 0.3;
-      const iconIndex = Math.floor(Math.random() * allIcons.length);
-      
-      grid.push({
-        id: `right-${i}`,
-        src: allIcons[iconIndex],
-        x,
-        y,
-        initialRotation,
-        opacity
-      });
-    }
-    
-    // Update icons state only if grid size changed to prevent unnecessary renders
     if (grid.length !== lastGridSize.current) {
       setIcons(grid);
       lastGridSize.current = grid.length;
+      iconRefs.current = new Array(grid.length);
     }
-    
-    // Mark that we've generated the grid
     generatedGrid.current = true;
-    
-    // Reset the flag
-    if (typeof window !== 'undefined') {
-      window.shouldRegenerateBackgroundGrid = false;
-    }
-  }, [getHeaderHeight, allIcons, isMobile]); // Include isMobile in dependencies
+    if (typeof window !== 'undefined') window.shouldRegenerateBackgroundGrid = false;
+  }, [getHeaderHeight, allIcons, isMobile]);
 
-  // Check if we need to regenerate the grid
+  // Interaction Logic (Same as before)
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    
-    // Helper function to check if we need to regenerate
-    const checkRegeneration = () => {
-      if (window.shouldRegenerateBackgroundGrid === true) {
-        generateGrid();
-      }
-    };
-    
-    // Initial generation
-    checkRegeneration();
-    
-    // Set up interval to check if we need to regenerate - use a longer interval to reduce CPU usage
-    const intervalId = setInterval(checkRegeneration, 2000);
-    
-    // Also check on visibility change (when tab becomes active)
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        checkRegeneration();
-      }
-    };
-    
-    try {
-      document.addEventListener('visibilitychange', handleVisibilityChange);
-    } catch (error) {
-      console.warn('Error adding visibility listener:', error);
-    }
-    
-    // Handle window resize
-    const handleResize = () => {
-      if (resizeTimeout.current) {
-        clearTimeout(resizeTimeout.current);
-      }
-      
-      resizeTimeout.current = setTimeout(() => {
-        // Force regeneration on resize
-        if (typeof window !== 'undefined') {
-          window.shouldRegenerateBackgroundGrid = true;
+
+    const handleInteraction = (clientX, clientY) => {
+      const interactionRadius = 150; 
+
+      iconRefs.current.forEach((ref) => {
+        if (!ref) return;
+
+        const rect = ref.getBoundingClientRect();
+        const iconCenterX = rect.left + rect.width / 2;
+        const iconCenterY = rect.top + rect.height / 2;
+
+        const distX = clientX - iconCenterX;
+        const distY = clientY - iconCenterY;
+        const distance = Math.sqrt(distX * distX + distY * distY);
+
+        if (distance < interactionRadius) {
+          const force = (interactionRadius - distance) / interactionRadius;
+          const moveX = -(distX / distance) * force * 60; 
+          const moveY = -(distY / distance) * force * 60;
+          ref.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        } else {
+          if (ref.style.transform !== '' && ref.style.transform !== 'translate(0px, 0px)') {
+            ref.style.transform = 'translate(0px, 0px)';
+          }
         }
+      });
+    };
+
+    const handleMouseMove = (e) => handleInteraction(e.clientX, e.clientY);
+    const handleTouchMove = (e) => {
+      if (e.touches && e.touches[0]) {
+        handleInteraction(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, [icons]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const checkRegeneration = () => {
+      if (window.shouldRegenerateBackgroundGrid === true) generateGrid();
+    };
+    checkRegeneration();
+    const intervalId = setInterval(checkRegeneration, 2000);
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') checkRegeneration();
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    const handleResize = () => {
+      if (resizeTimeout.current) clearTimeout(resizeTimeout.current);
+      resizeTimeout.current = setTimeout(() => {
+        if (typeof window !== 'undefined') window.shouldRegenerateBackgroundGrid = true;
       }, 500);
     };
+    window.addEventListener('resize', handleResize);
     
-    try {
-      window.addEventListener('resize', handleResize);
-    } catch (error) {
-      console.warn('Error adding resize listener:', error);
-    }
-    
-    // Cleanup
     return () => {
       clearInterval(intervalId);
-      try {
-        document.removeEventListener('visibilitychange', handleVisibilityChange);
-      } catch (error) {
-        console.warn('Error removing visibility listener:', error);
-      }
-      try {
-        window.removeEventListener('resize', handleResize);
-      } catch (error) {
-        console.warn('Error removing resize listener:', error);
-      }
-      if (resizeTimeout.current) {
-        clearTimeout(resizeTimeout.current);
-      }
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('resize', handleResize);
+      if (resizeTimeout.current) clearTimeout(resizeTimeout.current);
     };
   }, [generateGrid]);
 
-  // Don't render on very small screens
-  if (isMobile && typeof window !== 'undefined' && window.innerWidth <= 480) {
-    return null;
-  }
+  if (isMobile && typeof window !== 'undefined' && window.innerWidth <= 480) return null;
+
+  const renderIconSet = (setIndex) => (
+    <div className="icon-set">
+      {icons.map((icon, index) => {
+        const uniqueKey = `${setIndex}-${icon.id}`;
+        const refIndex = setIndex === 0 ? index : index + icons.length;
+        return (
+          <div
+            key={uniqueKey}
+            ref={el => iconRefs.current[refIndex] = el}
+            className="icon-wrapper"
+            style={{ left: `${icon.x}%`, top: `${icon.y}%` }}
+          >
+            <img
+              src={icon.src}
+              alt=""
+              className="wallpaper-icon"
+              style={{
+                transform: `rotate(${icon.initialRotation}deg)`,
+                opacity: icon.opacity
+              }}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
 
   return (
     <div className="background-wallpaper">
-      {icons.map(icon => (
-        <img
-          key={icon.id}
-          src={icon.src}
-          alt="Background Icon"
-          className="wallpaper-icon"
-          style={{
-            position: 'absolute',
-            left: `${icon.x}%`,
-            top: `${icon.y}%`,
-            transform: `rotate(${icon.initialRotation}deg)`,
-            opacity: icon.opacity
-          }}
-        />
-      ))}
+      <div className="sliding-track">
+        {renderIconSet(0)}
+        {renderIconSet(1)}
+      </div>
     </div>
   );
 };
 
-export default BackgroundIcons; 
+export default BackgroundIcons;
