@@ -6,7 +6,7 @@ import { Typewriter } from "react-simple-typewriter"
 
 // Dhumdhaam se dono photos import karein
 import imgUrl from "../images/headerphoto2.jpeg"      // Desktop wali
-import mobileImgUrl from "../images/mobile_robot.png" // Mobile wali (Yahan apna file name check karein)
+import mobileImgUrl from "../images/mobile_robot.png" // Mobile wali
 
 const Header = () => {
   const { language } = useLanguage();
@@ -22,13 +22,18 @@ const Header = () => {
       
       const userAgent = navigator.userAgent.toLowerCase();
       const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(userAgent);
-      setIsDesktop(!isMobile);
+      
+      // Desktop check: Mobile nahi hona chahiye aur screen width 1024 se zyada ho
+      setIsDesktop(!isMobile && window.innerWidth >= 1024);
       
       setIsLandscape(window.innerWidth > window.innerHeight);
       
       const handleResize = () => {
         setIsLandscape(window.innerWidth > window.innerHeight);
-        setIsDesktop(window.innerWidth >= 1024);
+        // Resize par bhi update karein
+        const userAgentResize = navigator.userAgent.toLowerCase();
+        const isMobileResize = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(userAgentResize);
+        setIsDesktop(!isMobileResize && window.innerWidth >= 1024);
       };
 
       try {
@@ -59,9 +64,9 @@ const Header = () => {
   ];
 
   // --- LOGIC: Screen ke hisaab se photo choose karo ---
-  // Agar Desktop hai to 'imgUrl', agar mobile hai to 'mobileImgUrl'
   const currentBackground = isDesktop ? imgUrl : mobileImgUrl;
 
+  // --- IOS RETURN BLOCK (iPhone/iPad ke liye specific) ---
   if (isIOS) {
     return (
       <div className="section" id="home">
@@ -70,7 +75,6 @@ const Header = () => {
             <div 
               className="ios-background" 
               style={{
-                // iOS ke liye bhi same logic
                 backgroundImage: `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0, 0.2)),url(${mobileImgUrl})`,
               }}
             />
@@ -81,7 +85,7 @@ const Header = () => {
               <Fade bottom>
                 <div className="heading-wrapper">
                   <h1>
-                    {/* {getText({ en: "I am a", it: "Sono un" }, language)}{" "} */}
+                    {/* iOS par "I am a" hidden hai aur color Black hai */}
                     <span style={{ color: "Black", fontWeight: "700" }}>
                       <Typewriter loop cursor cursorStyle="_" typeSpeed={70} deleteSpeed={50} delaySpeed={1200} words={language === 'it' ? italianRoles : englishRoles} />
                     </span>
@@ -101,13 +105,13 @@ const Header = () => {
     );
   }
 
+  // --- MAIN RETURN BLOCK (Desktop & Android ke liye) ---
   return (
     <div className="section" id="home">
       <div className="container">
         <div 
           className={`header-wrapper ${isLandscape ? 'landscape' : 'portrait'} ${isDesktop ? 'desktop' : 'mobile'}`}
           style={{
-            // YAHAN MAGIC HOGA: Background image change hogi variable ke hisaab se
             backgroundImage: `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0, 0.2)),url(${currentBackground})`,
           }}
         >
@@ -117,8 +121,18 @@ const Header = () => {
           <Fade bottom>
             <div className="heading-wrapper">
               <h1>
-                {getText({ en: "I am a", it: "Sono un" }, language)}{" "}
-                <span style={{ color: "#00B4D8"}}>
+                {/* LOGIC: Agar Desktop hai tabhi "I am a" dikhao */}
+                {isDesktop && (
+                  <>
+                    {getText({ en: "I am a", it: "Sono un" }, language)}{" "}
+                  </>
+                )}
+                
+                {/* LOGIC: Color aur Font Weight change based on Desktop vs Mobile */}
+                <span style={{ 
+                  color: isDesktop ? "#00B4D8" : "Black", 
+                  fontWeight: isDesktop ? "normal" : "700" 
+                }}>
                   <Typewriter loop cursor cursorStyle="_" typeSpeed={70} deleteSpeed={50} delaySpeed={1200} words={language === 'it' ? italianRoles : englishRoles} />
                 </span>
               </h1>
