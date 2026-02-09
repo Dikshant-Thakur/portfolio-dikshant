@@ -10,7 +10,6 @@ const Skills = () => {
       <div className="container">
         <Fade bottom cascade distance="20px">
           <h1>{getText(data.sections.skills, language)}</h1>
-
         </Fade>
         <div className="skills-wrapper">
           <div className="grid">

@@ -73,13 +73,15 @@ const BackgroundIcons = () => {
     const path = window.location.pathname;
     const isMobileView = isMobile;
     
-    if (width <= 480) {
+    // --- CHANGED: Ye block hata diya gaya hai taaki chote screens par bhi icons generate hon ---
+    /* if (width <= 480) {
       if (lastGridSize.current !== 0) {
         setIcons([]);
         lastGridSize.current = 0;
       }
       return;
     }
+    */
     
     let horizontalSpacing = 450; 
     let verticalSpacing = 160;    
@@ -87,8 +89,9 @@ const BackgroundIcons = () => {
     if (path.includes('resume')) verticalSpacing = 350; 
     
     if (isMobileView) {
-      horizontalSpacing = path.includes('resume') ? 350 : 250;
-      verticalSpacing = path.includes('resume') ? 250 : 100;
+      // Mobile ke liye spacing thodi kam kar di taaki zyada icons fit hon
+      horizontalSpacing = path.includes('resume') ? 350 : 150; 
+      verticalSpacing = path.includes('resume') ? 250 : 120;
     }
     
     const numCols = Math.ceil(width / horizontalSpacing) + 1;
@@ -111,7 +114,6 @@ const BackgroundIcons = () => {
         
         const initialRotation = Math.random() * 360;
         
-        // --- CHANGED: Opacity increased to 0.2 ---
         const opacity = 0.2; 
         
         const iconIndex = Math.floor(Math.random() * allIcons.length);
@@ -133,7 +135,7 @@ const BackgroundIcons = () => {
     if (typeof window !== 'undefined') window.shouldRegenerateBackgroundGrid = false;
   }, [getHeaderHeight, allIcons, isMobile]);
 
-  // Interaction Logic (Same as before)
+  // Interaction Logic
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -208,7 +210,8 @@ const BackgroundIcons = () => {
     };
   }, [generateGrid]);
 
-  if (isMobile && typeof window !== 'undefined' && window.innerWidth <= 480) return null;
+  // --- CHANGED: Ye line hata di gayi hai jo mobile par null return kar rahi thi ---
+  // if (isMobile && typeof window !== 'undefined' && window.innerWidth <= 480) return null;
 
   const renderIconSet = (setIndex) => (
     <div className="icon-set">

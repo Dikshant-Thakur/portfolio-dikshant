@@ -2,6 +2,7 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Contact from '../components/Contact';
 // Components
 import Header from "../components/Header"
 import Work from "../components/Work"
@@ -23,7 +24,8 @@ const IndexPage = () => (
     <Thesis></Thesis>
     <Work></Work>
     <Skills></Skills>
-    <Footer></Footer>
+    <Contact></Contact>
+    {/* <Footer></Footer> */}
   </Layout>
 )
 
