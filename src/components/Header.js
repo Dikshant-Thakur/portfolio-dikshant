@@ -81,20 +81,9 @@ const Header = () => {
               <Fade bottom>
                 <div className="heading-wrapper">
                   <h1>
-                    {/* {getText({ en: "I am a", it: "Sono un" }, language)}{" "}
-                    <span style={{ color: "#2FF3E0", fontWeight: "700" }}>
+                    {/* {getText({ en: "I am a", it: "Sono un" }, language)}{" "} */}
+                    <span style={{ color: "Black", fontWeight: "700" }}>
                       <Typewriter loop cursor cursorStyle="_" typeSpeed={70} deleteSpeed={50} delaySpeed={1200} words={language === 'it' ? italianRoles : englishRoles} />
-                    </span> */}
-                    <span className="gradient-text">
-                      <Typewriter
-                        loop
-                        cursor
-                        cursorStyle="_"
-                        typeSpeed={70}
-                        deleteSpeed={50}
-                        delaySpeed={1200}
-                        words={language === 'it' ? italianRoles : englishRoles}
-                      />
                     </span>
                   </h1>
                 </div>
