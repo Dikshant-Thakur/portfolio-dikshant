@@ -1,54 +1,40 @@
 import React from 'react';
 import '../styles/contact.scss';
+import { useLanguage } from '../contexts/LanguageContext'; // Language context import kiya
+import data, { getText } from '../data'; // Data aur helper function import kiya
 
-// Importing Icons
+// Icons Import
 import mail from '../images/contactIcon/mail.png';
 import linkedin from '../images/contactIcon/linkedin.png';
 import github from '../images/contactIcon/github.svg';
-import gscholar from '../images/contactIcon/gscholar.png';
-import devpost from '../images/contactIcon/devpost.png';
+
 
 const Contact = () => {
-  const contacts = [
-    { 
-      name: 'Email', 
-      icon: mail, 
-      link: 'mailto:dikshantthakur12@gmail.com', // Apna email yahan update karein
-      bg: '#e8f0fe' // Light Blue background
-    },
-    { 
-      name: 'LinkedIn', 
-      icon: linkedin, 
-      link: 'https://linkedin.com/in/dikshant-thakur', // Apna LinkedIn URL dalein
-      bg: '#eef6fc'
-    },
-    { 
-      name: 'GitHub', 
-      icon: github, 
-      link: 'https://github.com/Dikshant-Thakur', 
-      bg: '#f0f0f0'
-    },
-    // { 
-    //   name: 'Scholar', 
-    //   icon: gscholar, 
-    //   link: 'https://scholar.google.com/', 
-    //   bg: '#fff8e1'
-    // },
-    // { 
-    //   name: 'Devpost', 
-    //   icon: devpost, 
-    //   link: 'https://devpost.com/', 
-    //   bg: '#e0f7fa'
-    // },
-  ];
+  const { language } = useLanguage(); // Current language pata karein (en/it)
+
+  // String map for icons because data.js cannot store image imports directly
+  const iconMap = {
+    mail: mail,
+    linkedin: linkedin,
+    github: github,
+
+  };
 
   return (
-    <div className="contact-section">
-      <h2 className="section-title">Let's Connect</h2>
-      <p className="section-subtitle">Don't forget to smile!</p>
+    <div className="contact-section" id="contact"> {/* Added id="contact" for navigation */}
+      
+      {/* Title with Translation */}
+      <h2 className="section-title">
+        {getText(data.sections.contact, language)}
+      </h2>
+      
+      {/* Subtitle with Translation */}
+      <p className="section-subtitle">
+        {getText(data.contact.subtitle, language)}
+      </p>
       
       <div className="contact-grid">
-        {contacts.map((contact, index) => (
+        {data.contact.items.map((contact, index) => (
           <a 
             key={index} 
             href={contact.link} 
@@ -58,9 +44,14 @@ const Contact = () => {
             style={{ '--hover-bg': contact.bg }}
           >
             <div className="icon-box">
-              <img src={contact.icon} alt={contact.name} />
+              {/* Icon map se sahi image uthayein */}
+              <img src={iconMap[contact.iconName]} alt={getText(contact.name, language)} />
             </div>
-            <span className="contact-name">{contact.name}</span>
+            
+            {/* Name with Translation */}
+            <span className="contact-name">
+              {getText(contact.name, language)}
+            </span>
           </a>
         ))}
       </div>

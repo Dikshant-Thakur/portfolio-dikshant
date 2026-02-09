@@ -75,7 +75,7 @@ const siteData = {
     internships: { en: "Work & Internships", it: "Lavoro & Tirocini" },
     projects: { en: "Projects", it: "Progetti" },
     skills: { en: "Skills", it: "Competenze" },
-    contact: { en: "Contact", it: "Contatto" }
+    contact: { en: "Let's Connect", it: "Contattami" }
   },
 
   // Button text translations
@@ -471,25 +471,33 @@ projectsCarouselItems: [
 
   //   Contact Section --------------
 
-  contactSubHeading: {
-  en: "Let's chat about robots!",
-  it: "Parliamo di robot!"
-},
-  social: [
-
-    { img: githubIcon, 
-      url: "https://github.com/Dikshant-Thakur"
+  contact: {
+    subtitle: {
+      en: "Feel free to reach out for collaborations or just a friendly hello!\nAnd Yes one more thing, don't forget to SMILE :)",
+      it: "Sentiti libero di contattarmi per collaborazioni o anche solo per un saluto!\nE sì, un'altra cosa: non dimenticare di SORRIDERE :)"
     },
-    // {
-    //   img: googleScholarIcon,
-    //   url: "https://scholar.google.com/citations?hl=en&user=0YSkT7UAAAAJ",
-    // },
-    {
-      img: linkedinIcon,
-      url: "https://www.linkedin.com/in/dikshantthakur/",
-    },
-
-  ],
+    items: [
+      { 
+        name: { en: 'Email', it: 'Email' },
+        link: 'mailto:dikshantthakur12@gmail.com', 
+        bg: '#e8f0fe',
+        iconName: 'mail' 
+      },
+      { 
+        name: { en: 'LinkedIn', it: 'LinkedIn' }, 
+        link: 'https://linkedin.com/in/dikshant-thakur',
+        bg: '#eef6fc',
+        iconName: 'linkedin'
+      },
+      { 
+        name: { en: 'GitHub', it: 'GitHub' }, 
+        link: 'https://github.com/Dikshant-Thakur', 
+        bg: '#f0f0f0',
+        iconName: 'github'
+      },
+      // Agar aapko Scholar aur Devpost chahiye to unhein bhi yahan add kar sakte hain
+    ]
+  },
 
   // End Contact Section ---------------
 }

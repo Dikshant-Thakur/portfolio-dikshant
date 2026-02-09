@@ -16,8 +16,11 @@
     font-size: 1.1rem;
     color: #666;
     margin-bottom: 3rem;
+    
+    /* Ye line add karein taaki \n kaam kare */
+    white-space: pre-line; 
+    line-height: 1.6; /* Thoda space badhane ke liye */
   }
-
   .contact-grid {
     display: flex;
     justify-content: center;
