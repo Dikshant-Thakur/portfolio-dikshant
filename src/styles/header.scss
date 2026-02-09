@@ -3,7 +3,10 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  // align-items: center;
+  align-items: flex-start !important;
+  padding-left: 8vw !important;
+  padding-right: 5vw !important;
   justify-content: flex-end !important; /* Force text at bottom */
   padding-bottom: 2vh !important; /* Very minimal padding - text should be very low */
   
@@ -18,6 +21,7 @@
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
+  
   
   // Default to scroll for safety
   background-attachment: scroll;
@@ -166,7 +170,9 @@
     margin-top: 0;
     line-height: 1.2;
     font-size: 3.5rem; /* Back to larger desktop size */
-    text-align: center;
+    // text-align: center;
+    text-align: left !important;
+
     font-weight: bold;
     color: white;
     text-shadow: 2px 2px 8px black;
@@ -190,10 +196,12 @@
       margin-top: 0.5vh !important; /* Override global rule with more specific selector */
       margin-bottom: 1.2vh; /* Reduced spacing */
       font-size: 2.2rem; /* Slightly larger desktop size */
-      text-align: center;
+      // text-align: center;
+      text-align: left !important;
       line-height: 1.3;
-      color: white;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+      color: black; /* Crimson Red */
+      font-weight: 1000; /* Bold rakhna zaroori hai */
+      // text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
       span {
         text-shadow: none;
       }
@@ -215,13 +223,15 @@
 
   p {
     width: 50%;
-    text-align: center;
+    // text-align: center;
+    text-align: left !important;
     margin: 0 auto;
-    margin-top: 1.5vh;
+    // margin-top: 1.5vh;
+    margin: 1.5vh 0 0 0 !important;
     line-height: 1.4;
     font-size: 1.3rem;
 
-    color: #000000;   /* Deep Navy Blue */
+    color: #1a1a1a;   /* Deep Navy Blue */
     font-weight: 1000; /* Bold rakhna zaroori hai */
     background: none; 
     padding: 1000;
@@ -253,6 +263,14 @@
       width: 70%;
     }
     
+  }
+  .primary-btn {
+    margin-left: 0 !important;
+    margin-right: 1.0rem !important;
+    // margin-top: 2.5vh !important;
+    margin-top: 0.5vh !important; /* Reduced spacing */
+    margin-bottom: 0 !important;
+    align-self: flex-start !important; 
   }
 
   // iOS-specific class

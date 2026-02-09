@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Fade from "./animations/Fade"
-import { Carousel, Modal, Button } from "react-bootstrap" // Modal aur Button import kiya
+import { Carousel, Modal, Button } from "react-bootstrap"
 import { useLanguage } from "../contexts/LanguageContext"
 import data, { getText } from "../data"
 import "../styles/projects.scss"
@@ -15,7 +15,7 @@ import Injection_Molding from "../images/workPhotos/Injection_Molding.jpg"
 
 const Project = () => {
   const { language } = useLanguage();
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0); // State to control slide
   const [isMobile, setIsMobile] = useState(false);
   
   // Modal states
@@ -24,15 +24,10 @@ const Project = () => {
 
   // Media mapping
   const mediaMap = {
-    DigitalTwin: DigitalTwin,
-    autonomous_vehicle: autonomous_vehicle,
-    UVMS: UVMS,
-    ManipTPIK: ManipTPIK,
-    PLC: PLC,
-    Injection_Molding: Injection_Molding
+    DigitalTwin, autonomous_vehicle, UVMS, ManipTPIK, PLC, Injection_Molding
   };
 
-  // Data Process kar rahe hain
+  // Data Processing
   const carouselItems = data.projectsCarouselItems.map(item => ({
     ...item,
     media: mediaMap[item.media],
@@ -40,7 +35,6 @@ const Project = () => {
     title: getText(item.title, language),
     subtitle: getText(item.subtitle, language),
     description: getText(item.description, language),
-    // Detailed description ko bhi translate kar rahe hain agar wo exist karta hai
     detailedDescription: item.detailedDescription 
       ? item.detailedDescription.map(d => getText(d, language))
       : [],
@@ -51,40 +45,22 @@ const Project = () => {
   }));
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
+    const checkMobile = () => { setIsMobile(window.innerWidth <= 768); };
     checkMobile();
-    try {
-      window.addEventListener('resize', checkMobile);
-    } catch (error) {
-      console.warn('Error adding resize listener:', error);
-    }
-    return () => {
-      try {
-        window.removeEventListener('resize', checkMobile);
-      } catch (error) {
-        console.warn('Error removing resize listener:', error);
-      }
-    };
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const handleCarouselSelect = (selectedIndex) => {
-    try {
-      setActiveIndex(selectedIndex);
-    } catch (error) {
-      console.error('Error in projects carousel selection:', error);
-    }
+  // Is function se hum carousel ko control karenge
+  const handleSelect = (selectedIndex) => {
+    setActiveIndex(selectedIndex);
   };
 
-  // Button Click Handler
   const handleButtonClick = (button, item) => {
     if (item.isModal) {
-      // Agar isModal true hai, toh popup kholo
       setCurrentModalData(item);
       setShowModal(true);
     } else {
-      // Nahi toh purana behavior (new tab open)
       window.open(button.url);
     }
   };
@@ -95,121 +71,84 @@ const Project = () => {
         <Fade bottom cascade distance="20px">
           <h1>{getText(data.sections.projects, language)}</h1>
         </Fade>
+        
         <div className="project-wrapper">
+          {/* --- MAIN CAROUSEL (UNCHANGED) --- */}
           <Carousel 
             className="masterCarousel" 
             activeIndex={activeIndex}
-            onSelect={handleCarouselSelect}
+            onSelect={handleSelect}
             touch={true} 
-            interval={3000}
-            indicators={!isMobile}
-            controls={true}
-            keyboard={false}
-            slide={true}
-            wrap={true}
+            interval={null} // Auto-play band kar diya taaki user khud control kare (optional)
+            indicators={false} // Default dots hata diye kyunki ab hum thumbnails use karenge
+            controls={!isMobile}
             variant="dark"
           >
               {carouselItems.map((item, index) => (
                 <Carousel.Item key={index}>
                   {item.type === 'video' ? (
                     <div className="video-container">
-                      <video
-                        className="d-block"
-                        src={item.media}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        loading="lazy"
-                        preload="metadata"
-                      />
+                      <video className="d-block" src={item.media} autoPlay muted loop playsInline />
                     </div>
                   ) : (
-                    <img
-                      className="d-block w-100"
-                      src={item.media}
-                      alt={item.title}
-                      loading="lazy"
-                    />
+                    <img className="d-block w-100" src={item.media} alt={item.title} />
                   )}
                   <Carousel.Caption className="carouselCaption">
                     <h3>{item.title}</h3>
-                    <h4>{item.subtitle}</h4>
                     <p>{item.description}</p>
-                    {item.buttons.map((button, buttonIndex) => (
-                      <button
-                        key={buttonIndex}
-                        // Yahan humne click handler change kiya hai
-                        onClick={() => handleButtonClick(button, item)}
-                        type="button"
-                        className="btn"
-                      >
+                    {item.buttons.map((button, bIndex) => (
+                      <button key={bIndex} onClick={() => handleButtonClick(button, item)} type="button" className="btn">
                         {button.text}
                       </button>
                     ))}
                   </Carousel.Caption>
                 </Carousel.Item>
               ))}
-            </Carousel>
+          </Carousel>
+
+          {/* --- NEW THUMBNAIL NAVIGATION (Bottom Strip) --- */}
+          <div className="thumbnail-navigation">
+            {carouselItems.map((item, index) => (
+              <div 
+                key={index} 
+                className={`thumb-item ${index === activeIndex ? 'active' : ''}`}
+                onClick={() => handleSelect(index)} // Clicking sets the main carousel index
+              >
+                <div className="thumb-media">
+                  {item.type === 'video' ? (
+                    <video src={item.media} muted /> 
+                  ) : (
+                    <img src={item.media} alt="thumbnail" />
+                  )}
+                </div>
+                <span className="thumb-title">{item.title}</span>
+              </div>
+            ))}
           </div>
+
+        </div>
       </div>
 
-      {/* Modal / Popup Component */}
-      <Modal 
-        show={showModal} 
-        onHide={() => setShowModal(false)}
-        size="lg"
-        centered
-        className="project-modal" // Aap SCSS mein styling add kar sakte hain
-      >
+      {/* MODAL (UNCHANGED) */}
+      <Modal show={showModal} onHide={() => setShowModal(false)} size="lg" centered className="project-modal">
         {currentModalData && (
           <>
-            <Modal.Header closeButton>
-              <Modal.Title>{currentModalData.title}</Modal.Title>
-            </Modal.Header>
+            <Modal.Header closeButton><Modal.Title>{currentModalData.title}</Modal.Title></Modal.Header>
             <Modal.Body>
+              {/* Modal Body Content same as before */}
               <div style={{ marginBottom: '20px' }}>
-                {/* Logic: Check karo ki Modal ke liye alag media hai ya nahi */}
                 {(currentModalData.modalMedia || currentModalData.media) && (
-                  <>
-                    {/* Check karo ki wo Video hai ya Image */}
-                    {(currentModalData.modalType === 'video') ? (
-                        <video 
-                          src={currentModalData.modalMedia || currentModalData.media} 
-                          controls 
-                          autoPlay 
-                          muted 
-                          style={{ width: '100%', borderRadius: '8px' }} 
-                        />
-                    ) : (
-                        <img 
-                          src={currentModalData.modalMedia || currentModalData.media} 
-                          alt={currentModalData.title} 
-                          style={{ width: '100%', borderRadius: '8px' }} 
-                        />
-                    )}
-                  </>
+                   (currentModalData.type === 'video') ? 
+                   <video src={currentModalData.modalMedia || currentModalData.media} controls autoPlay muted style={{ width: '100%' }} /> : 
+                   <img src={currentModalData.modalMedia || currentModalData.media} alt="" style={{ width: '100%' }} />
                 )}
               </div>
-              
-              {/* Description Points */}
               <div className="modal-description">
-                {currentModalData.detailedDescription && currentModalData.detailedDescription.length > 0 ? (
-                  <ul>
-                    {currentModalData.detailedDescription.map((point, i) => (
-                      <li key={i} style={{ marginBottom: '10px' }}>{point}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>{currentModalData.description}</p>
-                )}
+                 {currentModalData.detailedDescription?.length > 0 ? (
+                  <ul>{currentModalData.detailedDescription.map((p, i) => <li key={i}>{p}</li>)}</ul>
+                 ) : <p>{currentModalData.description}</p>}
               </div>
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={() => setShowModal(false)}>
-                {language === 'it' ? 'Chiudi' : 'Close'}
-              </Button>
-            </Modal.Footer>
           </>
         )}
       </Modal>

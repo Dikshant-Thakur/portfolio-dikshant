@@ -52,8 +52,8 @@ const siteData = {
   },
  
   headerParagraph: {
-    en: "I am a robotics engineering enthusiast passionate about bringing autonomous robots to life, with more than 2 years of experience in the industrial automation field.",
-    it: "Sono un appassionato di ingegneria robotica, desideroso di dare vita a robot autonomi e ho più di 2 anni di esperienza nel campo dell'automazione industriale."
+    // en: "I am a robotics engineering enthusiast passionate about bringing autonomous robots to life, with more than 2 years of experience in the industrial automation field.",
+    // it: "Sono un appassionato di ingegneria robotica, desideroso di dare vita a robot autonomi e ho più di 2 anni di esperienza nel campo dell'automazione industriale."
   },
 
   // Navigation labels
@@ -113,8 +113,8 @@ const siteData = {
         it: "Università di Genova"
       },
       para: {
-        en: "Msc in Robotics engineering (In Progress)",
-        it: "Msc in Ingegneria Robotica (In Corso)"
+        en: "Msc in Robotics engineering",
+        it: "Msc in Ingegneria Robotica"
       },
       imageSrc: Unigelogo,
       workImg: UnigeUr5e,
@@ -293,9 +293,35 @@ UnigeCarouselItems: [
 // Projects Carousel Items
 projectsCarouselItems: [
 
+
+    {
+    media: "DigitalTwin",
+    type: 'video',
+    category: "Robotics",
+    title: {
+      en: "Digital Twin Project",
+      it: "Progetto Digital Twin"
+    },
+    // subtitle: {
+    //   en: "Subtitle of Project 1",
+    //   it: "Sottotitolo del Progetto 1"
+    // },
+    description: {
+      en: "A digital Twin approach for the monitoring of the floating roof tanks for the oil refinery with UAVs.",
+      it: "Un approccio di gemello digitale per il monitoraggio dei serbatoi a tetto galleggiante per la raffineria di petrolio con UAV."
+    },
+    buttons: [
+      {
+        text: { en: "Read More", it: "Scopri di più" },
+        url: "https://github.com/Dikshant-Thakur/VR_Project.git"
+      }
+    ]
+  },
+
   {
     media: "PLC", 
     type: 'image',
+    category: "Industrial",
 
     modalMedia: "Injection_Molding",
     type: 'image',
@@ -329,31 +355,10 @@ projectsCarouselItems: [
       }
     ]
   },
-  {
-    media: "DigitalTwin",
-    type: 'video',
-    title: {
-      en: "Digital Twin Project",
-      it: "Progetto Digital Twin"
-    },
-    // subtitle: {
-    //   en: "Subtitle of Project 1",
-    //   it: "Sottotitolo del Progetto 1"
-    // },
-    description: {
-      en: "A digital Twin approach for the monitoring of the floating roof tanks for the oil refinery with UAVs.",
-      it: "Un approccio di gemello digitale per il monitoraggio dei serbatoi a tetto galleggiante per la raffineria di petrolio con UAV."
-    },
-    buttons: [
-      {
-        text: { en: "Read More", it: "Scopri di più" },
-        url: "https://github.com/Dikshant-Thakur/VR_Project.git"
-      }
-    ]
-  },
     {
     media: "autonomous_vehicle",
     type: 'video',
+    category: "Robotics",
     title: {
       en: "Sense-Plan-Act (Custom Autonomous Vehicle)",
       it: "Progetto Veicolo Autonomo"
@@ -376,6 +381,7 @@ projectsCarouselItems: [
   {
     media: "UVMS",
     type: 'video',
+    category: "Robotics",
     title: {
       en: "Under water Vehicle Manipulator System (UVMS)",
       it: "Sistema di Manipolazione per Veicoli Subacquei (UVMS)"
@@ -398,6 +404,7 @@ projectsCarouselItems: [
     {
     media: "ManipTPIK",
     type: 'video',
+    category: "Robotics",
     title: {
       en: "Task Priority Inverse Kinematics for two Manipulators",
       it: "Kinematics Inversa a Priorità per due Manipolatori"
@@ -424,12 +431,12 @@ projectsCarouselItems: [
     {
       img: C_Icon,
       para:
-        "C, C++, C#, CUDA",
+        "C, C++",
     },
     {
       img: pythonicon,
       para:
-        "Python, MATLAB, R",
+        "Python, MATLAB",
     },
 
     {
@@ -440,12 +447,12 @@ projectsCarouselItems: [
     {
       img: MobileRoboticsicon,
       para:
-        "Mobile Robotics, SLAM, Path Planning",
+        "Mobile Robotics, SLAM, Path Planning, Kinematics & Dynamics, Manipulator Control",
     },
     {
       img: rosIcon,
       para:
-        "ROS, ROS2, Gazebo",
+        "ROS/ROS2, Rviz, Gazebo, NAV2, MoveIt",
     },
     {
       img: matlabicon,

@@ -1,28 +1,10 @@
 import React from "react"
-import Card from "./atoms/Card"
 import Fade from "./animations/Fade"
 import { useLanguage } from "../contexts/LanguageContext"
 import data, { getText } from "../data"
-import {useState} from "react"
-import Modal from "./modal"
 
 const Education = () => {
   const { language } = useLanguage();
-  const [openModal, setOpenModal] = useState(false);
-  const [id, setId] = useState(0);
-  
-  // Navigation functions for modal
-  const handlePrevious = () => {
-    if (id > 0) {
-      setId(id - 1);
-    }
-  };
-  
-  const handleNext = () => {
-    if (id < data.education.length - 1) {
-      setId(id + 1);
-    }
-  };
 
   return (
     <div className="section" id="education">
@@ -30,36 +12,35 @@ const Education = () => {
         <Fade bottom cascade distance="20px">
           <h1>{getText(data.sections.education, language)}</h1>
         </Fade>
+        
         <div className="education-wrapper">
-          <div className="grid">
-            <Fade>
+          <div className="education-list">
+            <Fade bottom cascade>
               {data.education.map((school, index) => (
-                <Card
-                  key={index}
-                  id={index}
-                  heading={getText(school.title, language)}
-                  paragraph={getText(school.para, language)}
-                  imgUrl={school.imageSrc}
-                  projectLink={school.url}
-                  setOpenModal={setOpenModal}
-                  setId={setId}
-                  type="education"
-                />
+                <div key={index} className="education-row">
+                  {/* Left Side: Logo/Image (Optional, chota sa) */}
+                  <div className="school-logo">
+                    <img src={school.imageSrc} alt="School Logo" />
+                  </div>
+
+                  {/* Right Side: Text */}
+                  <div className="school-details">
+                    <h3>{getText(school.title, language)}</h3>
+                    <p>{getText(school.para, language)}</p>
+                    {school.url && (
+                      <a href={school.url} target="_blank" rel="noopener noreferrer" className="school-link">
+                        Visit Website &rarr;
+                      </a>
+                    )}
+                  </div>
+                </div>
               ))}
             </Fade>
           </div>
-          {openModal && <Modal 
-            closeModal={setOpenModal} 
-            id={id} 
-            type="education"
-            totalItems={data.education.length}
-            onPrevious={handlePrevious}
-            onNext={handleNext}
-          />}
         </div>
       </div>
     </div>
   )
 }
 
-export default Education 
+export default Education
