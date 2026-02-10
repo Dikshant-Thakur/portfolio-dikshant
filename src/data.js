@@ -485,7 +485,7 @@ projectsCarouselItems: [
       },
       { 
         name: { en: 'LinkedIn', it: 'LinkedIn' }, 
-        link: 'https://linkedin.com/in/dikshant-thakur',
+        link: 'https://linkedin.com/in/dikshantthakur',
         bg: '#eef6fc',
         iconName: 'linkedin'
       },
