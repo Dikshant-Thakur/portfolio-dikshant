@@ -9,13 +9,18 @@ const isVideoFile = (url) => {
   return videoExtensions.some(ext => url.toLowerCase().endsWith(ext));
 };
 
-const Card = ({id, heading, paragraph, imgUrl, projectLink, setOpenModal, setId, type = "project"}) => {
+const Card = ({id, heading, paragraph, imgUrl, setOpenModal, setId}) => {
   const { language } = useLanguage();
   const isVideo = isVideoFile(imgUrl);
   
   return (
-   
-    <div className="card">
+    <div 
+      className="card"
+      onClick={() => {
+        setOpenModal(true);
+        setId(id);
+      }}
+    >
       {isVideo ? (
         // Video background
         <div className="background-video">
@@ -40,23 +45,18 @@ const Card = ({id, heading, paragraph, imgUrl, projectLink, setOpenModal, setId,
           }}
         />
       )}
+      
       <div className="content">
         <h1 className="header">{heading}</h1>
+        {/* Mobile par ye text CSS se truncate ho jayega */}
         <p className="text" dangerouslySetInnerHTML={{ __html: paragraph }}></p>
 
-        <button 
-          onClick= {()=>{
-            setOpenModal(true);
-            setId(id);
-          }}
-          type="button" className="btn"> {getText(data.buttons.explore, language)}
+        <button type="button" className="btn"> 
+          {getText(data.buttons.explore, language)}
         </button>
-        
       </div>
-      
     </div>
-    
   )
 }
 
-export default Card
+export default Card;
